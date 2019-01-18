@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/i_to_e"
+            android:checked="true"
+            android:title="@string/indonesian_english" />
+        <item
+            android:id="@+id/e_to_i"
+            android:title="@string/english_indonesian" />
+    </group>
+</menu>
