@@ -10,6 +10,6 @@ public interface EngToIndContract {
         void setView(ArrayList<DictModel> results);
     }
     interface Presenter{
-        void getDataFromDb();
+        void getDataFromDb(String query);
     }
 }

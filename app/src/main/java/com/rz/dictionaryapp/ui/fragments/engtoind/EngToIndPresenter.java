@@ -22,8 +22,8 @@ public class EngToIndPresenter implements EngToIndContract.Presenter{
     }
 
     @Override
-    public void getDataFromDb() {
-        new EngToIndPresenter.LoadDicts().execute("");
+    public void getDataFromDb(String query) {
+        new EngToIndPresenter.LoadDicts().execute(query);
     }
 
     @SuppressLint("StaticFieldLeak")

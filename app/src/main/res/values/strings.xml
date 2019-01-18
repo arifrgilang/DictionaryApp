@@ -21,5 +21,6 @@
     <string name="engtoind">English to Indonesian</string>
     <string name="indtoeng">Indonesian To English</string>
     <string name="loading_database">Loading database . . .</string>
+    <string name="search">Search</string>
 
 </resources>

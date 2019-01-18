@@ -4,7 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -36,6 +41,7 @@ public class EngToIndFragment extends Fragment implements EngToIndContract.View{
         View view = inflater.inflate(R.layout.fragment_eng_to_ind, container, false);
         ButterKnife.bind(this, view);
         init();
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -46,7 +52,33 @@ public class EngToIndFragment extends Fragment implements EngToIndContract.View{
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRv.setAdapter(mAdapter);
 
-        mPresenter.getDataFromDb();
+        mPresenter.getDataFromDb("");
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.main, menu);
+
+        MenuItem item = menu.findItem(R.id.menu_search);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Log.d("eng to ind submit", "submitted");
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mPresenter.getDataFromDb(s);
+                return true;
+            }
+        });
+
     }
 
     @Override
