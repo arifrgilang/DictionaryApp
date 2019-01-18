@@ -32,6 +32,7 @@ public class IndToEngPresenter implements IndToEngContract.Presenter{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            view.showLoading(true);
             mIndoHelper.open();
         }
 
@@ -48,6 +49,7 @@ public class IndToEngPresenter implements IndToEngContract.Presenter{
             super.onPostExecute(words);
             view.setView(words);
             mIndoHelper.close();
+            view.showLoading(false);
         }
     }
 }

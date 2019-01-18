@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.rz.dictionaryapp.R;
 import com.rz.dictionaryapp.data.model.DictModel;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 public class IndToEngFragment extends Fragment implements IndToEngContract.View{
 
     @BindView(R.id.rv_i_to_e) RecyclerView mRv;
+    @BindView(R.id.loading_i_to_e) ProgressBar mLoading;
 
     private IndToEngContract.Presenter mPresenter;
     private RvAdapter mAdapter;
@@ -45,6 +47,11 @@ public class IndToEngFragment extends Fragment implements IndToEngContract.View{
         mRv.setAdapter(mAdapter);
 
         mPresenter.getDataFromDb();
+    }
+
+    @Override
+    public void showLoading(Boolean status) {
+        mLoading.setVisibility(status ? View.VISIBLE: View.INVISIBLE);
     }
 
     @Override

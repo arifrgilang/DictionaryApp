@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface IndToEngContract {
     interface View{
+        void showLoading(Boolean status);
         void setView(ArrayList<DictModel> results);
     }
     interface Presenter{
